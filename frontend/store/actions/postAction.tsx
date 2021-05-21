@@ -37,7 +37,7 @@ export const loadPosts = (): AppThunk => async (dispatch) => {
     type: TYPE.START_REQUEST,
   })
   try {
-    const { data } = await axios.get('http://localhost:5000/api/posts')
+    const { data } = await axios.get('/api/posts')
     dispatch({
       type: TYPE.LOADING_DATA,
       payload: data,
