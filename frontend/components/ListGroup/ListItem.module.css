@@ -1,0 +1,11 @@
+.listItem {
+  @apply flex flex-col my-4;
+
+  .listItemAuthor {
+    @apply font-bold;
+    font-size: 1.5rem;
+  }
+  .ListItemMessage {
+    @apply text-gray-500 text-sm;
+  }
+}

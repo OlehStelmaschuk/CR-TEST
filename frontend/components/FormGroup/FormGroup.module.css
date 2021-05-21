@@ -1,0 +1,19 @@
+.form {
+  @apply flex flex-col bg-white sm:mt-2 justify-center p-4;
+
+  .formHeader {
+    @apply text-center sm:text-3xl text-xl;
+  }
+
+  .formInputGroup {
+    @apply flex flex-col my-2;
+    & input[type='text'],
+    textarea {
+      @apply border-[1px] border-gray-200 focus:outline-none focus:border-gray-400 rounded resize-none p-2;
+    }
+  }
+
+  .btn {
+    @apply bg-green-600 hover:bg-green-700 text-white max-w-[20rem] w-full mx-auto p-2 my-2 rounded outline-none;
+  }
+}

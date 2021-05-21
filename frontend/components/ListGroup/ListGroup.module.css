@@ -1,0 +1,7 @@
+.listGroup {
+  @apply flex flex-col bg-white mt-2 sm:mt-4 justify-center p-4;
+
+  .listGroupHeader {
+    @apply text-center text-xl sm:text-3xl;
+  }
+}
