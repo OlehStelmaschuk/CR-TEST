@@ -12,11 +12,9 @@ export const addNewPost =
     })
 
     try {
-      await axios.post('http://localhost:5000/api/posts', post)
+      await axios.post('/api/posts', post)
 
-      const { data: allData } = await axios.get(
-        'http://localhost:5000/api/posts'
-      )
+      const { data: allData } = await axios.get('/api/posts')
       dispatch({
         type: TYPE.LOADING_DATA,
         payload: allData,
