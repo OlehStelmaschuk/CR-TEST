@@ -1,5 +1,5 @@
 {
-  "name": "qa-helper-server",
+  "name": "CRTESTSOA",
   "version": "1.0.0",
   "description": "",
   "main": "server.mjs",
@@ -22,6 +22,7 @@
     "start": "node server.mjs",
     "nodemon": "nodemon server.mjs",
     "dev": "concurrently \"npm run nodemon\" \"npm run dev --prefix frontend\"",
+    "build": "npm install --prefix frontend && npm run build --prefix frontend && npm run export --prefix frontend",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend && npm run export --prefix frontend"
   },
   "prettier": {
