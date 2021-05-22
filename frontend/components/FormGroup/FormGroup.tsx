@@ -1,4 +1,11 @@
-import { ChangeEvent, KeyboardEvent, FC, useState, useEffect } from 'react'
+import {
+  ChangeEvent,
+  KeyboardEvent,
+  FC,
+  useState,
+  useEffect,
+  memo,
+} from 'react'
 import styles from './FormGroup.module.css'
 import { addNewPost } from '@/store/actions/postAction'
 import { useDispatch } from 'react-redux'
@@ -8,7 +15,6 @@ import 'react-toastify/dist/ReactToastify.css'
 
 const FormGroup: FC = () => {
   const dispatch = useDispatch()
-
   const [form, setForm] = useState<IPost>({
     author: '',
     message: '',
@@ -26,7 +32,7 @@ const FormGroup: FC = () => {
     })
   }, [])
 
-  const validation = ({ author, message }: IPost): boolean => {
+  const validation = ({ author, message }: IPost) => {
     const err: string[] = []
     const reName = /^[\s\w]+$/
     const reHTTP = /(?:(?:https?):\/\/)/
@@ -101,4 +107,4 @@ const FormGroup: FC = () => {
   )
 }
 
-export default FormGroup
+export default memo(FormGroup)
