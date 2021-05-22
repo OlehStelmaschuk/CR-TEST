@@ -24,7 +24,6 @@ export interface IFrontPost extends IPost {
 export interface IPostState {
   posts: Array<IPost>
   loading: boolean
-  success: boolean | null
 }
 
 export interface IListGroup {

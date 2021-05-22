@@ -3,25 +3,17 @@ import { IPostState } from '@/interfaces/Posts'
 import { PayloadAction } from '@reduxjs/toolkit'
 
 export const postsReducer = (
-  state: IPostState = { posts: [], loading: false, success: null },
+  state: IPostState = { posts: [], loading: false },
   { type, payload }: PayloadAction
 ) => {
   switch (type) {
     case TYPE.START_REQUEST:
-      return { ...state, loading: true, success: null }
+      return { ...state, loading: true }
     case TYPE.LOADING_DATA: {
-      return { ...state, posts: payload, loading: false, success: true }
+      return { ...state, posts: payload, loading: false }
     }
-    case TYPE.ADD_NEW_POST:
-      return {
-        ...state,
-        posts: [payload, ...state.posts],
-        loading: false,
-        success: true,
-      }
     case TYPE.POST_FAIL:
-      return { ...state, loading: false, success: false }
-
+      return { ...state, loading: false }
     default:
       return state
   }

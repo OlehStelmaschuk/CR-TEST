@@ -5,8 +5,7 @@ import Post from '../models/postModel.mjs'
 // @route GET /api/posts
 // @access Public
 export const getAllPosts = asyncHandler(async (req, res) => {
-  const posts = await Post.find({})
-  posts.sort((a,b)=>b.createdAt-a.createdAt)
+  const posts = await Post.find({}).sort(('-createdAt'))
   res.json(posts)
 })
 
