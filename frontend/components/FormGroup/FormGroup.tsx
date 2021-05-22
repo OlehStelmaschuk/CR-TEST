@@ -37,8 +37,6 @@ const FormGroup: FC = () => {
     })
   }, [])
 
-  useEffect(() => console.log(form.err), [form.err])
-
   const validation = ({ author, message }: IPost) => {
     const err: any = { author: {}, message: {} }
     const reName = /^[\s\w]+$/
@@ -67,7 +65,7 @@ const FormGroup: FC = () => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
-      err: { author: {}, message: {} },
+      err: { ...form.err, [e.target.name]: '' },
     })
     localStorage.setItem(e.target.name, e.target.value)
   }
