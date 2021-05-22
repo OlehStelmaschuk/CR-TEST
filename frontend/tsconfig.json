@@ -21,7 +21,7 @@
     "paths": {
       "@/components/*": ["components/*"],
       "@/interfaces/*": ["interfaces/*"],
-      "@/store/*": ["store/*"]
+      "@/reduxStore/*": ["reduxStore/*"]
     }
   },
   "exclude": ["node_modules"],

@@ -6,6 +6,7 @@
 | Redux          | https://redux.js.org/                                 | Стейт-менеджер                                                      |
 | Redux-Thunk    | https://github.com/reduxjs/redux-thunk                | Middleware для асинхронных запросов в Redux Action                  |
 | Axios          | https://www.npmjs.com/package/axios                   | JS-библиотека для HTTP-запросов                                     |
+| Lodash         | https://lodash.com/                                   | JS-библиотека для работы с данными                                  |
 | Mongoose       | https://mongoosejs.com/                               | Драйвер для работы с БД MongoDB                                     |
 | Node.JS        | https://nodejs.org/                                   | JS рантайм основанный на V8                                         |
 | Express.JS     | https://expressjs.com/ru/                             | NodeJS фреймворк для создания веб-сервера                           |
@@ -40,6 +41,14 @@ https://soa-cr-test.herokuapp.com/
 > 
 > cd CR-TEST
 > 
+> mv .env.example .env
+
+
+
+Указать актуальную строку подключения в директиве MONGO_URI в файле .env
+
+
+
 > yarn run build
 > 
 > yarn start

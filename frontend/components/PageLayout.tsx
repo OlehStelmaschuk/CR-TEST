@@ -22,4 +22,4 @@ PageLayout.defaultProps = {
   container: true,
 }
 
-export default PageLayout
+export { PageLayout }

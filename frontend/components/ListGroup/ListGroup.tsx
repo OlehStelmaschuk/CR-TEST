@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import styles from './ListGroup.module.css'
 import ListItem from '@/components/ListGroup/ListItem'
 import { IListGroup } from '@/interfaces/Posts'
-import { RootState } from '@/store/store'
+import { RootState } from '@/reduxStore/store'
 
 const ListGroup: FC<IListGroup> = ({ posts }) => {
   return (

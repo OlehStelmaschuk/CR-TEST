@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react'
 import { FormGroup, ListGroup, PageLayout } from '@/components/index'
-import { loadPosts } from '@/store/actions/postAction'
+import { loadPosts } from '@/reduxStore/actions/postAction'
 import { useDispatch } from 'react-redux'
 
 const Home: FC = () => {

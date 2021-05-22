@@ -7,15 +7,20 @@ import {
   memo,
 } from 'react'
 import styles from './FormGroup.module.css'
-import { addNewPost } from '@/store/actions/postAction'
+import { addNewPost } from '@/reduxStore/actions/postAction'
+import _ from 'lodash'
 import { useDispatch } from 'react-redux'
-import { IPost } from '@/interfaces/Posts'
-import { ToastContainer, toast } from 'react-toastify'
+import { IForm, IPost } from '@/interfaces/Posts'
+import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 const FormGroup: FC = () => {
   const dispatch = useDispatch()
-  const [form, setForm] = useState<IPost>({
+  const [form, setForm] = useState<IForm>({
+    err: {
+      author: {},
+      message: {},
+    },
     author: '',
     message: '',
   })
@@ -32,23 +37,21 @@ const FormGroup: FC = () => {
     })
   }, [])
 
+  useEffect(() => console.log(form.err), [form.err])
+
   const validation = ({ author, message }: IPost) => {
-    const err: string[] = []
+    const err: any = { author: {}, message: {} }
     const reName = /^[\s\w]+$/
     const reHTTP = /(?:(?:https?):\/\/)/
-    if (!author || !message) {
-      let labels: string = ''
-      !author && (labels += 'Author; ')
-      !message && (labels += 'Message; ')
-      err.push(`Field are empty: ${labels}`)
-    } else if (!author.match(reName))
-      err.push('Author: Latin, number and underscore symbols are allowed')
-    if (message.match(reHTTP)) err.push('Author: HTTP(S) links are not allowed')
-    if (err.length !== 0) err.map((item) => toast.error(item))
-    return err.length === 0
+    if (!author) err.author.empty = true
+    else if (!author.match(reName)) err.author.incorrectSym = true
+    if (!message) err.message.empty = true
+    if (message.match(reHTTP)) err.message.httpMessage = true
+    setForm({ ...form, err: err })
+    return _.isEmpty(err.author) && _.isEmpty(err.message)
   }
 
-  const sendForm = (form: IPost) => {
+  const sendForm = (form: IForm) => {
     form.author = form.author.trim()
     form.message = form.message.trim()
     if (validation(form)) {
@@ -61,7 +64,11 @@ const FormGroup: FC = () => {
   const changeFormHandler = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+      err: { author: {}, message: {} },
+    })
     localStorage.setItem(e.target.name, e.target.value)
   }
 
@@ -83,6 +90,11 @@ const FormGroup: FC = () => {
           onChange={changeFormHandler}
           onKeyDown={ctrlEnterHandler}
         />
+        <div className={styles.formErrorBlock}>
+          {form.err.author.empty && 'Field is empty'}
+          {form.err.author.incorrectSym &&
+            'Latin symbols, number and _ are allowed'}
+        </div>
       </div>
       <div className={styles.formInputGroup}>
         <span>Message:</span>
@@ -93,6 +105,10 @@ const FormGroup: FC = () => {
           onChange={changeFormHandler}
           onKeyDown={ctrlEnterHandler}
         />
+        <div className={styles.formErrorBlock}>
+          {form.err.message.empty && 'Field is empty'}
+          {form.err.message.httpMessage && 'URL Link is not allowed'}
+        </div>
       </div>
       <button className={styles.btn} onClick={() => sendForm(form)}>
         Send

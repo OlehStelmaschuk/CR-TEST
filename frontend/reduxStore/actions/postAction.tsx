@@ -1,6 +1,6 @@
-import * as TYPE from '@/store/constants/postsConstants'
+import * as TYPE from '../constants/postsConstants'
 import { IPost } from '@/interfaces/Posts'
-import { AppThunk } from '@/store/hooks'
+import { AppThunk } from '../hooks'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 

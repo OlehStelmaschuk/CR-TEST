@@ -1,4 +1,4 @@
-import * as TYPE from '@/store/constants/postsConstants'
+import * as TYPE from '@/reduxStore/constants/postsConstants'
 import { IPostState } from '@/interfaces/Posts'
 import { PayloadAction } from '@reduxjs/toolkit'
 
