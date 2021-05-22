@@ -4,5 +4,6 @@ node_modules
 .idea
 yarn.lock
 .next
+out
 .yarn.lock
 package-lock.json
